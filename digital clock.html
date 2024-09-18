@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        
+        .out {
+            position: absolute;
+            height: 500px;
+            width: 500px;
+            background-color: black;
+            margin-top: 100px;
+            margin-left: 200px;
+            border: 1px solid white;
+        }
+
+        .in1 {
+            position: absolute;
+            top: 20px;
+            margin-left: 20px;
+            height: 450px;
+            width: 460px;
+            border-radius: 5px;
+            background-color: black;
+            border: 3px solid white;
+        
+        }
+
+        .in2 {
+            position: absolute;
+            top: 20px;
+            margin-left: 20px;
+            height: 400px;
+            width: 420px;
+            border-radius: 5px;
+            background-color: black;
+            border: 5px solid white;
+        
+        }
+
+        
+
+        .datetext {
+            display: flex;
+            position: relative;
+            top: 20px;
+            left: 20px;
+            width: 380px;
+            height: 30px;
+            margin-bottom: 0px;
+            border: 1px solid;
+            justify-content: space-around;
+            background-color:black;
+            color:white;
+            border: 2px solid  black;
+            font-size: 20px;
+            align-items: top;
+        }
+
+
+        .datevalues {
+            position: relative;
+            display: flex;
+            top: 20px;
+            left: 20px;
+            width: 380px;
+            height: 40px;
+            justify-content: space-around;
+            background-color:black;
+            color:red;
+            border: 2px solid   white;
+            border-radius: 5px;
+            align-items: center;
+            font-size: 30px;
+        
+            
+        }
+
+
+
+        .timetext {
+            display: flex;
+            position: relative;
+            top: 25px;
+            left: 20px;
+            width: 380px;
+            height: 25px;
+            margin-bottom: 0px;
+            justify-content: space-around;
+            background-color:black;
+            color:white;
+            border: 2px solid  black;
+            font-size: 20px;
+            align-items: top;
+      
+            
+        }
+
+
+        .timevalues {
+            position: relative;
+            display: flex;
+            top: 25px;
+            left: 20px;
+            width: 380px;
+            height: 40px;
+            justify-content: space-around;
+            background-color:black;
+            color:red;
+            border: 2px solid   white;
+            border-radius: 5px;
+            align-items: center;
+            font-size: 30px;;
+      
+        
+        }
+
+        
+        #hourValue{
+            position:absolute;
+            left:55px;
+
+        }
+        #minuteValue{
+            position:absolute;
+
+        }
+        #secondValue{
+            position:absolute;
+            right:55px;
+
+        }
+        #col1{
+            position:absolute;
+            left:125px;
+        }
+        #col2{
+            position: absolute;
+            right:125px;
+        }
+        .ampm{
+
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        background-color:black;
+        bottom:20px;
+        right:20px;
+        }
+        .AM{
+            
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        #boxam{
+            height:25px;
+            width:25px;
+            background-color: black;
+            border: 1px solid    white;
+            border-radius: 50%;
+        }
+        #amtext{
+            height:25px;
+            width:25px;
+            background-color: black;
+            color: aliceblue;
+        }
+
+        .PM{
+        
+            display: flex;
+            
+            flex-direction: row;
+            
+            justify-content: space-between;
+        }
+        #boxpm{
+            height:25px;
+            width:25px;
+            background-color:black;
+            border:1px  solid   white;
+            border-radius: 50%;
+        }
+        #pmtext{
+            height:25px;
+            width:25px;
+            background-color: black;
+            color: aliceblue;
+        }
+
+        
+        
+    </style>
+
+</head>
+
+<body>
+    </script>
+    <div class="out">
+        <div class="in1">
+            <div class="in2">
+
+                <div class="datetext">
+                    <div>DATE</div>
+                    <div>MONTH</div>
+                    <div>YEAR</div>
+                </div>
+
+                <div class="datevalues">
+                    <div id="dateValue">datevalue</div>
+                    <div id="monthValue">monthvalue</div>
+                    <div id="yearValue">yearvalue</div>
+                </div>
+                <div class="timetext">
+                    <div>Hour</div>
+                    <div>Min</div>
+                    <div>Sec</div>
+                </div>
+                <div class="timevalues">
+                    <div id="hourValue">Hval</div>
+                    <div    id="col1">:</div>
+                    <div id="minuteValue">Mval</div>
+                    <div    id="col2">:</div>
+                    <div id="secondValue">Sval</div>
+                </div>
+                <div    class="ampm">
+                <div    class="AM">
+                <div   id="boxam" ></div>
+                <div    id="amtext">AM</div></div>
+                <div    class="PM">
+                    <div    id="boxpm"></div>
+                    <div    id="pmtext">PM</div>
+                </div></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var date = document.getElementById("dateValue")
+        var month = document.querySelector("#monthValue");
+        var year = document.querySelector("#yearValue");
+        var hour = document.getElementById("hourValue")
+        var minute = document.querySelector("#minuteValue");
+        var second = document.querySelector("#secondValue");
+        var today = new Date();
+        var daValue = today.getDate();
+        var monValue = today.getMonth();
+        var yValue = today.getFullYear();
+        var hValue = today.getHours();
+        var minValue = today.getMinutes();
+        var secValue = today.getSeconds();
+        console.log(daValue);
+        date.innerText = daValue;
+        switch (monValue) {
+            case 0:
+                month.innerText = "01";
+                break;
+            case 1:
+                month.innerText = "02";
+                break;
+            case 2:
+                month.innerText = "03";
+                break;
+            case 3:
+                month.innerText = "04";
+                break;
+            case 4:
+                month.innerText = "05";
+                break;
+            case 5:
+                month.innerText = "06";
+                break;
+            case 6:
+                month.innerText = "07";
+                break;
+            case 7:
+                month.innerText = "08";
+                break;
+            case 8:
+                month.innerText = "09";
+                break;
+            case 9:
+                month.innerText = "10";
+                break;
+            case 10:
+                month.innerText = "11";
+                break;
+            case 11:
+                month.innerText = "12";
+                break;
+
+
+        }
+
+        year.innerText = yValue;
+        switch (hValue) {
+            case 13:
+                hour.innerText = "01";
+                break;
+            case 14:
+                hour.innerText = "02";
+                break;
+            case 15:
+                hour.innerText = "03";
+                break;
+            case 16:
+                hour.innerText = "04";
+                break;
+            case 17:
+                hour.innerText = "05";
+                break;
+            case 18:
+                hour.innerText = "06";
+                break;
+            case 19:
+                hour.innerText = "07";
+                break;
+            case 20:
+                hour.innerText = "07";
+                break;
+            case 21:
+                hour.innerText = "07";
+                break;
+            case 22:
+                hour.innerText = "07";
+                break;
+            case 23:
+                hour.innerText = "07";
+                break;
+            case 24:
+                hour.innerText = "07";
+                break;
+            default:
+                hour.innerText = hValue;
+                break;
+        }
+
+
+
+        minute.innerText = minValue;
+        second.innerText = secValue;
+
+        console.log(daValue, monValue, yValue, hValue, minValue, secValue);
+
+
+        var am=document.getElementById("boxam");
+        var pm=document.getElementById("boxpm");
+        if  (hValue>=13){
+            pm.style.background="red";
+                        
+        }else{
+            am.style.background="red"
+            
+        }
+        console.log(am,pm)
+
+
+
+    </script>
+
+
+</body>
+
+</html>
