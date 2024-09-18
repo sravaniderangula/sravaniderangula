@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<style>
+    .heading{
+        margin-top: 100px;
+        margin-left: 50px;
+        font-size: 45px;
+
+    }
+    .list{
+        margin-left: 50px;
+        font-size: 35px;
+    }
+    @media screen {
+        body{
+            background-color: antiquewhite;
+            color: palevioletred;
+            
+        }
+    }
+    @media screen and (orientation:portrait){
+        body{
+            background-color: black;
+            color:white;
+            
+        }
+        .heading::before{
+            position:absolute;
+            content:"applied portrait in Screen media";
+            background-color: whitesmoke;
+            color: blueviolet;
+            top:0;
+            left:15px;
+        
+        }
+    }
+    @media screen and (orientation:landscape){
+        body{
+            background-color: palegreen;
+            color:palevioletred;
+            
+        }
+        .heading::before{
+            position:absolute;
+            content:"applied landscape in Screen media";
+            background-color: whitesmoke;
+            color: blueviolet;
+            top:0;
+            left:15px;
+        
+        }
+  
+    }
+    
+    @media print {
+        body{
+            background-color: greenyellow;
+            color:orangered;
+        }
+        
+    }
+    @media print and (orientation:portrait ) {
+        body{
+            background-color:maroon;
+            color: white;
+            
+        }
+        .heading::before{
+            position:absolute;
+            content:"applied portrait in print media";
+            background-color: whitesmoke;
+            color: blueviolet;
+            top:0;
+            left:15px;
+        
+        }
+  
+    }
+    @media print and (orientation:landscape){
+        body{
+            background-color: orange;
+            color:rebeccapurple;
+            
+        }
+        .heading::before{
+            position:absolute;
+            content:"applied landscape in print media";
+            background-color: whitesmoke;
+            color: blueviolet;
+            top:0;
+            left:15px;
+        
+        }
+  
+    }
+    
+    
+    </style>
+    </head>
+    <body>
+        <h1 class="heading">Media Queries</h1>
+        <ul   class="list">
+            <li>Print</li>
+            <li>Screen</li>
+            <li>All(Default)</li>
+        </ul>
+    </body>
+</html>
