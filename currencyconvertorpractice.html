@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .parent {
+            margin: auto;
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            background-color:dodgerblue;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            font-size: 30px;
+
+        }
+
+        .child {
+            width: auto;
+            height: 100px;
+            
+        }
+        #convert{
+            width: 150px;
+            height: 50px;
+            font-size: 30px;
+            color: white;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="child">
+            <label>Select from currency value</label>
+            <select id="fromCurrency"></select>
+        </div>
+        <div class="child">
+            <label>Select to currency value</label>
+            <select id="toCurrency"></select>
+        </div>
+        <div class="child">
+            <label>Enter the Amount to be converted</label>
+            <input type="number" id="amount">
+        </div>
+        <div class="child" >
+            <button id="convert">Convert</button>
+        </div>
+        <div class="child">
+            <label id="result"></label>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+                     function listOfCurrencies() {
+                return fetch("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.json").
+                    then(outcome => outcome.json())
+            }
+            function currencyValues(){
+                return fetch("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json").
+                    then(outcome => outcome.json())
+   
+
+            }
+
+            function buildCurrencyOptions(){
+                const fromCurrencyOption=document.getElementById("fromCurrency");
+                const toCurrencyOption=document.getElementById("toCurrency");
+                listOfCurrencies().then((data)=>
+            {
+                const currencyList=data;
+                console.log(currencyList);
+                for(currency in currencyList){
+                    const buildfromCurrency=document.createElement("option");
+                    buildfromCurrency.value=currency;
+                    buildfromCurrency.innerText=currencyList[currency];
+                    fromCurrencyOption.appendChild(buildfromCurrency);
+                    const buildtoCurrency=document.createElement("option");
+                    buildtoCurrency.value=currency;
+                    buildtoCurrency.innerText=currencyList[currency];
+                    toCurrencyOption.appendChild(buildtoCurrency)
+                }
+            })
+            }
+
+
+            const convertButton = document.getElementById("convert");
+            convertButton.addEventListener("click", convertCurrency)
+
+
+ 
+                function convertCurrency(){
+                    let fromCurrency = document.getElementById("fromCurrency");
+                let toCurrency = document.getElementById("toCurrency");
+                const money=document.getElementById("amount").valueAsNumber;
+                const result=document.getElementById("result");
+                
+
+                const selectedFromCurrency = fromCurrency.value;
+                const selectedToCurrency = toCurrency.value;
+                const selectedAmount=money.value;
+               // console.log(selectedFromCurrency,selectedToCurrency,selectedAmount);
+                currencyValues().then((data)=>{
+                    let listOfcurrencyValues=data;
+                   // console.log(listOfcurrencyValues);
+                    let {eur}=listOfcurrencyValues;
+                    const selectedFromCurrencyvalue=eur[selectedFromCurrency];
+                    const selectedToCurrencyvalue=eur[selectedToCurrency];
+                   const ratio=selectedToCurrencyvalue/selectedFromCurrencyvalue;
+                   //console.log(money)
+                   const calculated=(ratio*money);
+                   console.log(calculated);
+                   result.innerText=`converted amount : ${calculated.toFixed(4)}.`;
+
+                })
+                
+
+                }
+
+
+        
+          
+            
+
+buildCurrencyOptions();
+
+        })
+    </script>
+</body>
+
+</html>
