@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .main {
+            margin: 50px auto;
+            width: 400px;
+            height: 400px;
+            border: 5px solid black;
+            box-sizing: border-box;
+
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            font-size: 20px;
+        }
+
+        #first {
+
+            height: 100px;
+            width: 300px;
+            border: 1px solid black;
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+        }
+
+        #second {
+
+
+            height: 100px;
+            width: 300px;
+            border: 1px solid black;
+            background-color: aqua;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+
+
+
+        }
+
+
+        .time {
+            margin: 25px auto;
+            padding:20px;
+            display: flex;
+            flex-direction: row;
+            justify-content:space-evenly;
+            align-items: center;
+            width: 400px;
+            height: 80px;
+            box-sizing: border-box;
+            
+        }
+
+        #twentyFour{
+            height: 50px;
+            width: 100px;
+            background-color: #27d617;
+            color: white;
+            font-size: 25px;
+        }
+
+        #twelve {
+            height: 50px;
+            width: 100px;
+            background-color: rgb(195, 15, 147);
+            color: white;
+            font-size: 25px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="time">
+        <button id="twentyFour">24hour</button>
+        <button id="twelve">twelve</button>
+
+    </div>
+
+
+    <div class="main">
+        <div id="first">date</div>
+        <div id="second">time</div>
+
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+
+
+
+            const today = new Date();
+            console.log(today.toDateString());
+            const day = today.getDay();
+            const date = today.getDate();
+            const year = today.getFullYear();
+            const month = today.getMonth();
+            const hours = today.getHours();
+            const minutes = today.getMinutes();
+            const seconds = today.getSeconds();
+            console.log("day", day)
+            console.log("date", date)
+            console.log("year", year)
+            console.log("month", month)
+            console.log("hours", hours)
+            console.log("minutes", minutes)
+            console.log("seconds", seconds)
+
+            function twentyFour() {
+                const today = new Date();
+                const hours = today.getHours();
+                const minutes = today.getMinutes();
+                const seconds = today.getSeconds();
+                console.log("I was clicked")
+                const datevalue = document.getElementById("first");
+                datevalue.innerText = today.toDateString();
+                const timevalue = document.getElementById("second");
+                const hourvaluecalculated = (hours - 12) >= 0 ? `${hours}pm` : `${hours}am`;
+
+                timevalue.innerText = (`hour:${hourvaluecalculated} minute:${minutes} second:${seconds}`)
+
+
+
+            }
+
+
+
+
+            function twelve() {
+                const today = new Date();
+                const hours = today.getHours();
+                const minutes = today.getMinutes();
+                const seconds = today.getSeconds();
+                const datevalue = document.getElementById("first");
+                datevalue.innerText = today.toDateString();
+                const timevalue = document.getElementById("second");
+                const hourvaluecalculated = (hours - 12) >= 0 ? `${hours - 12}pm` : `${hours}am`;
+                console.log(hourvaluecalculated)
+                timevalue.innerText = (`hour:${hourvaluecalculated} minute:${minutes} second:${seconds}`)
+
+            }
+
+            twentyFour();
+            document.getElementById("twelve").addEventListener("click", twelve)
+            document.getElementById("twentyFour").addEventListener("click", twentyFour)
+
+
+
+
+
+
+
+
+        })
+    </script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
