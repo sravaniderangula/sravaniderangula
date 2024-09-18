@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Transparent Image Shadows
+        </title>
+        <style>
+            .box{
+                width: 400px;
+                height:400px;
+                margin-top: 100px;
+                margin-left: 500px;
+                border: 1px solid gold;
+                box-shadow: 10px 10px 5px 15px #00ff26, inset 10px 10px 5px 15px hsl(313, 100%, 50%);
+
+
+            }
+            .box img{
+                filter: drop-shadow(15px 15px 10px palegreen)   ;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="box">
+            <img src="https://png.pngtree.com/png-vector/20230424/ourmid/pngtree-friends-forever-text-vector-png-image_256306.png" alt="image">
+        </div>
+    </body>
+</html>
